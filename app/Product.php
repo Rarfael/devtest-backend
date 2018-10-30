@@ -20,6 +20,14 @@ class Product extends Model
         return Product::create($mapedProducts);
     }
 
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+    */
+
     public function deleteProduct($id)
     {
         $product = Product::findOrFail($id);
