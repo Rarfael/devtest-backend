@@ -13,6 +13,15 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/', function(){
+    return response()->json(['message' => 'API working', 'status' => 'Connected']);
 });
+/** The resource method automaticaly create all the basic routes
+ *  POST      api/products                 products.store    App\Http\Controllers\ProductsController@store    api          
+ *  GETHEAD   api/products/create          products.create   App\Http\Controllers\ProductsController@create   api          
+ *  GETHEAD   api/products/{product}       products.show     App\Http\Controllers\ProductsController@show     api          
+ *  PUTPATCH  api/products/{product}       products.update   App\Http\Controllers\ProductsController@update   api          
+ *  DELETE    api/products/{product}       products.destroy  App\Http\Controllers\ProductsController@destroy  api          
+ *  GETHEAD   api/products/{product}/edit  products.edit     App\Http\Controllers\ProductsController@edit     api
+ */
+Route::resource('products', 'ProductsController');
