@@ -58,7 +58,9 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $updatedProduct = $this->product->updateProduct($request, $id);
+        dd($updatedProduct);
+        return new ProductResource($updatedProduct);
     }
 
     /**
@@ -69,7 +71,8 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        $deletedProduct = $this->product->deleteProduct($id);
+        $product = Product::findOrFail($id);
+        $deletedProduct = $this->product->deleteProduct($product);
         return new ProductResource($deletedProduct);
     }
 }

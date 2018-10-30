@@ -21,7 +21,6 @@ Route::get('/', function(){
  *  GETHEAD   api/products/create          products.create   App\Http\Controllers\ProductsController@create   api          
  *  GETHEAD   api/products/{product}       products.show     App\Http\Controllers\ProductsController@show     api          
  *  PUTPATCH  api/products/{product}       products.update   App\Http\Controllers\ProductsController@update   api          
- *  DELETE    api/products/{product}       products.destroy  App\Http\Controllers\ProductsController@destroy  api          
- *  GETHEAD   api/products/{product}/edit  products.edit     App\Http\Controllers\ProductsController@edit     api
+ *  DELETE    api/products/{product}       products.destroy  App\Http\Controllers\ProductsController@destroy  api 
  */
 Route::resource('products', 'ProductsController');

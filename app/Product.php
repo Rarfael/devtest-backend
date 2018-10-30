@@ -14,12 +14,38 @@ class Product extends Model
 
     protected $dates = ['deleted_at'];
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $product
+     * @return \Illuminate\Http\Response
+     */
+
     public function createProduct(Request $product)
     {
         $mapedProducts = Product::limitingStrings(collect($product), 100);
         return Product::create($mapedProducts);
     }
 
+        /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $product
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function updateProduct(Request $product, $id)
+    {
+        $mapedProducts = Product::limitingStrings(collect($product), 100);
+        $productToUpdate = Product::findOrFail($id);
+        
+        $productToUpdate->product_name = $mapedProducts['product_name'];
+        $productToUpdate->product_type = $mapedProducts['product_name'];
+        $productToUpdate->product_description = $mapedProducts['product_description'];
+
+        return $productToUpdate->save();
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -28,9 +54,8 @@ class Product extends Model
      * @return \Illuminate\Http\Response
     */
 
-    public function deleteProduct($id)
+    public function deleteProduct($product)
     {
-        $product = Product::findOrFail($id);
         if($product->delete()) {
             return $product;
         }
