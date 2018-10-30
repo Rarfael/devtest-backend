@@ -90,6 +90,7 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deletedProduct = $this->product->deleteProduct($id);
+        return new ProductResource($deletedProduct);
     }
 }

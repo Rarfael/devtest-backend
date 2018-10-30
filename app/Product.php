@@ -20,6 +20,14 @@ class Product extends Model
         return Product::create($mapedProducts);
     }
 
+    public function deleteProduct($id)
+    {
+        $product = Product::findOrFail($id);
+        if($product->delete()) {
+            return $product;
+        }
+    }
+
     /**
      * @param  array $strings
      * @param int $numCaracter
