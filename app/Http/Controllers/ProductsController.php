@@ -16,7 +16,6 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::paginate(15);
-        
         return ProductResource::collection($products);
     }
 
@@ -49,7 +48,8 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return new ProductResource($product);
     }
 
     /**
