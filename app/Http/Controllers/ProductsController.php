@@ -8,6 +8,12 @@ use App\Http\Resources\Product as ProductResource;
 
 class ProductsController extends Controller
 {
+    protected $product = null;
+
+    public function __construct(Product $product)
+    {
+        $this->product = $product;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +43,8 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = $this->product->createProduct($request);
+        return new ProductResource($product);
     }
 
     /**

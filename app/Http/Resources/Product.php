@@ -18,6 +18,7 @@ class Product extends JsonResource
         return [
             'data' => ['id' => $this->id,
             'product_name' => $this->product_name,
+            'product_type' => $this->product_type,
             'product_description' => $this->product_description,],
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
