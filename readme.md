@@ -13,19 +13,19 @@ php artisan key:generate
 ## Endpoints
 ### GET 
 ``` 
-api/products
+api/v1/products
 ```
 ### POST 
 ```
-api/products/
+api/v1/products/
 ```
 ### PUT 
 ```
-api/products/{id}
+api/v1/products/{id}
 ```
 ### DELETE
 ```
-api/products/{id}
+api/v1/products/{id}
 ```
 
 
