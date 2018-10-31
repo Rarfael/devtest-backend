@@ -23,4 +23,7 @@ Route::get('/', function(){
  *  PUTPATCH  api/products/{product}       products.update   App\Http\Controllers\ProductsController@update   api          
  *  DELETE    api/products/{product}       products.destroy  App\Http\Controllers\ProductsController@destroy  api 
  */
-Route::resource('products', 'ProductsController');
+
+Route::group(['prefix' => '/v1'], function() {
+    Route::resource('products', 'ProductsController');
+});
